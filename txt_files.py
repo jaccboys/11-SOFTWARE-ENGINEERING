@@ -9,3 +9,4 @@ with open("files/students.txt", "r") as file:
 
         name, secret_word = line.strip().split(", ")
         print(f"Name: {name}, Silly Word: {secret_word}")
+        print('hello')
