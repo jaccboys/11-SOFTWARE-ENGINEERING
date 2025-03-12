@@ -1,7 +1,33 @@
 questions = [
-    {"topic": "ninjago", "qns": "Who is Lloyd's father?", "Correct Ans": "Lord Garmadon"},
-    {"topic": "ninjago", "qns": "Who is kai's sister?", "Correct Ans": "Nya"},
-    {"topic": "ninjago", "qns": "how many elemental weapons are there?", "Correct Ans": "4"},
-    {"topic": "ninjago", "qns": "Long before ______ had a name", "Correct Ans": "time"},
+    # NINJAGO
+    {"topic": "Ninjago", "qns": "Who is Lloyd's father?", 
+     "options": ["Sensei Wu", "Lord Garmadon", "Clouse", "Ray"], "Correct Ans": 2},
     
+    {"topic": "Ninjago", "qns": "Who is Kai's sister?", 
+     "options": ["Nya", "Skylor", "Pixal", "Harumi"], "Correct Ans": 1},
+    
+    {"topic": "Ninjago", "qns": "How many elemental weapons are there?", 
+     "options": ["1", "2", "3", "4"], "Correct Ans": 4},
+    
+    {"topic": "Ninjago", "qns": "Long before ______ had a name.", 
+     "options": ["Ninjago", "Destiny", "Time", "Power"], "Correct Ans": 3},
+    
+    {"topic": "Ninjago", "qns": "What is the name of the Green Ninja?", 
+     "options": ["Kai", "Cole", "Lloyd", "Zane"], "Correct Ans": 3},
+
+    # STAR WARS
+    {"topic": "Star Wars", "qns": "What is the name of Han Solo’s ship?", 
+     "options": ["X-Wing", "Millennium Falcon", "TIE Fighter", "Slave I"], "Correct Ans": 2},
+    
+    {"topic": "Star Wars", "qns": "Who trained Luke Skywalker?", 
+     "options": ["Yoda", "Mace Windu", "Obi-Wan Kenobi", "Darth Vader"], "Correct Ans": 3},
+    
+    {"topic": "Star Wars", "qns": "What is Darth Vader’s real name?", 
+     "options": ["Darth Maul", "Sheev Palpatine", "Anakin Skywalker", "Ben Solo"], "Correct Ans": 3},
+    
+    {"topic": "Star Wars", "qns": "What species is Yoda?", 
+     "options": ["Human", "Yoda’s Species", "Togruta", "Wookiee"], "Correct Ans": 2},
+    
+    {"topic": "Star Wars", "qns": "Who said 'I am your father'?", 
+     "options": ["Obi-Wan Kenobi", "Darth Vader", "Yoda", "Emperor Palpatine"], "Correct Ans": 2}
 ]
