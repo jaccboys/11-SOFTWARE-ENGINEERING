@@ -51,7 +51,7 @@ def filter_by_topic(questions): #function to filter the questions based on the p
 
 def game_loop(filtered_questions):
     score = 0
-    typewriter("Remember to spell your answers correctly please")
+    typewriter("Remember to spell your answers correctly please.")
     for x in filtered_questions: 
         typewriter(x["qns"])
         typewriter(x['options'])
@@ -64,8 +64,15 @@ def game_loop(filtered_questions):
             typewriter("Wrong!")
     return score
 
-def main(questions):
-    welcome()
+def end_game(score, filtered_questions):
+    typewriter(f"Your score is {score} out of {len(filtered_questions)} questions.")
+    
+
+
+def main(questions, score=0):
+    #welcome()
     filtered_questions = filter_by_topic(questions)
+    game_loop(filtered_questions)
+    end_game(score, filtered_questions)
     
 main(questions)
