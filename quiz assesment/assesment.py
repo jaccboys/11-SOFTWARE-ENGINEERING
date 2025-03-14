@@ -40,28 +40,24 @@ def filter_by_topic(questions): #function to filter the questions based on the p
     while player_choice != 'ninjago' and player_choice != 'star wars':
         typewriter("Your input is invalid. \n please enter a valid input. (make sure your spelling is correct)") 
         player_choice = input().lower().strip()
-
-    
     
     filtered_questions = []
     for i in questions:
         if i["topic"].lower() == player_choice.lower():
             filtered_questions.append(i)
 
-    print('testing', filtered_questions) #TESTING
     return filtered_questions
 
-#def answer_qn(filtered_question):
-    #typewriter("Enter your answer: ")
-    #chosen_anser = input().lower().strip()
 
 def game_loop(filtered_questions):
     score = 0
+    typewriter("Remember to spell your answers correctly please")
     for x in filtered_questions: 
         typewriter(x["qns"])
-        typewriter("Enter your answer: ")
-        answer = input().lower().strip() #recieve lowercase input without trailing spaces
-        if answer == x["Correct Ans"]: #check if the answer is correct
+        typewriter(x['options'])
+        typewriter("Enter your answer below: \n\n >>")
+        answer = input()
+        if answer.lower() == x["Correct Ans"]: #check if the answer is correct
             typewriter("Correct!") #print correct if the answer is correct
             score += 1 #increment the score by 1
         else:
