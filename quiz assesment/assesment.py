@@ -22,11 +22,6 @@ def welcome(): #function to print out the welcome message
     name = input('>>  ').upper().strip()
     print('WELCONE', name, 'TO MY QUIZ')
 
-def print_questions(questions): #function to print out the questions
-    pass
-    #typewriter("The questions are: ")
-    #for i in questions:
-    #    typewriter(f"{questions[i]["qns"]}")
 
 def filter_by_topic(questions): #function to filter the questions based on the player's choice
     typewriter('What topic would you like to be quizzed on?')
