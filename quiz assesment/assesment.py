@@ -29,14 +29,14 @@ def filter_by_topic(questions): #function to filter the questions based on the p
     
     player_choice = input().lower().strip()
     
-    print('testing', player_choice) #testing
-    #VERIFICATION FOR ANSWER
+    # print('testing', player_choice) #testing
     
-    while player_choice != 'ninjago' and player_choice != 'star wars':
+    #VERIFICATION FOR ANSWER
+    while player_choice not in ['ninjago', 'star wars']: #checking if the input is valid
         typewriter("Your input is invalid. \n please enter a valid input. (make sure your spelling is correct)") 
         player_choice = input().lower().strip()
     
-    typewriter('You have chosen ' + player_choice + ' as your topic.')
+    typewriter(f'You have chosen {player_choice} as your topic.')
 
     filtered_questions = []
     for i in questions:
@@ -50,16 +50,22 @@ def game_loop(filtered_questions):
     score = 0
     typewriter("**Remember to spell your answers correctly please.**")
     typewriter('please type out one of each answer from the options given')
+    typewriter('Good luck!')
     for x in filtered_questions: 
         typewriter(x["qns"])
-        typewriter(", ".join(x['options']))
+        typewriter(" | ".join(x['options']))
         typewriter("Enter your answer below:")
-        answer = input()
-        if answer.lower() == x["Correct Ans"]: #check if the answer is correct
-            typewriter("\nCorrect!") #print correct if the answer is correct
-            score += 1 #increment the score by 1
+
+        answer = input().strip().lower()
+        correct_answer = x["Correct Ans"].strip().lower()
+
+        if answer == correct_answer:  # Ensure both are case-insensitive and trimmed
+            typewriter("\nCorrect!")
+            score += 1
         else:
             typewriter("\nWrong!")
+            typewriter(f"The correct answer is {x['Correct Ans']}")
+
     return score
 
 def end_game(score, filtered_questions):
@@ -69,10 +75,10 @@ def end_game(score, filtered_questions):
     
 
 
-def main(questions, score=0):
-    #welcome()
+def main(questions): #main function
+    welcome()
     filtered_questions = filter_by_topic(questions)
-    game_loop(filtered_questions)
+    score = game_loop(filtered_questions)
     end_game(score, filtered_questions)
-    
+
 main(questions)

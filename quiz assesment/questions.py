@@ -38,17 +38,17 @@ questions = [
     {"topic": "Ninjago", "qns": "Who is Lloyd's father?", 
      "options": ["Sensei Wu", "Lord Garmadon", "Clouse", "Ray"], "Correct Ans": "Lord Garmadon"},
     
-    {"topic": "Ninjago", "qns": "Who is Kai's sister?", 
-     "options": ["Nya", "Skylor", "Pixal", "Harumi"], "Correct Ans": "Nya"},
+    # {"topic": "Ninjago", "qns": "Who is Kai's sister?", 
+    #  "options": ["Nya", "Skylor", "Pixal", "Harumi"], "Correct Ans": "Nya"},
     
-    {"topic": "Ninjago", "qns": "How many elemental weapons are there?", 
-     "options": ["3", "4", "5", "6"], "Correct Ans": "4"},
+    # {"topic": "Ninjago", "qns": "How many elemental weapons are there?", 
+    #  "options": ["3", "4", "5", "6"], "Correct Ans": "4"},
     
-    {"topic": "Ninjago", "qns": "Long before ______ had a name.", 
-     "options": ["Ninjago", "Destiny", "Time", "Power"], "Correct Ans": "Time"},
+    # {"topic": "Ninjago", "qns": "Long before ______ had a name.", 
+    #  "options": ["Ninjago", "Destiny", "Time", "Power"], "Correct Ans": "Time"},
     
-    {"topic": "Ninjago", "qns": "What is the name of the Green Ninja?", 
-     "options": ["Kai", "Cole", "Lloyd", "Zane"], "Correct Ans": "Lloyd"},
+    # {"topic": "Ninjago", "qns": "What is the name of the Green Ninja?", 
+    #  "options": ["Kai", "Cole", "Lloyd", "Zane"], "Correct Ans": "Lloyd"},
 
     # STAR WARS
     {"topic": "Star Wars", "qns": "What is the name of Han Solo’s ship?", 
