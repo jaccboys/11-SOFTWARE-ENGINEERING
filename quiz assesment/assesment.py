@@ -4,11 +4,11 @@ from questions import questions
 
 def typewriter(words): #function to print out text in a typewriter fashion
     for char in words:
-        sleep(0.005)
+        sleep(0.01)
         sys.stdout.write(char)
         sys.stdout.flush()
         if char in ':.!, ?><':
-            sleep(0.01)
+            sleep(0.03)
     sys.stdout.write("\n\n")
 
 def welcome(): #function to print out the welcome message
