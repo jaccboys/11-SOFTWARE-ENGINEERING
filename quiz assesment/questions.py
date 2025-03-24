@@ -111,5 +111,3 @@ questions = [
      "hint": "He revealed this to Luke during a lightsaber duel."}
 ]
 
-
-valid_answers = ['a', 'b', 'c', 'd', 'A', 'B', 'C', 'D', '1', '2', '3', '4', 'hint', 'HINT'] #valid answers for the quiz
