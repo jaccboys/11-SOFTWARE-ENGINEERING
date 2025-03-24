@@ -22,11 +22,11 @@ def welcome(): #function to print out the welcome message
 
 def filter_by_topic(questions): #function to filter the questions based on the player's choice
     typewriter('What topic would you like to be quizzed on?')
-    typewriter("Enter your chosen topic from the following:\n\n Ninjago | Star wars") 
+    typewriter("Enter your chosen topic from the following:\n\nRetro Gaming | Kendrick Lamar | Aphex Twin") 
     
     player_choice = input().lower().strip()
     
-    while player_choice not in ['ninjago', 'star wars']: #checking if the input is one of the topics available
+    while player_choice not in ['retro gaming', 'kendrick lamar', 'aphex twin']: #checking if the input is one of the topics available
         typewriter("Your input is invalid. \nPlease enter a valid input. (make sure your spelling is correct)") 
         player_choice = input().lower().strip()
     
@@ -86,7 +86,7 @@ def game_loop(filtered_questions):
             pick1234 = 3
         elif answer == 'd' or answer == '4':
             pick1234 = 4
-        elif answer == 'hint':
+        elif answer == 'hint' and hints != 0:
             typewriter("You silly billy, WRONG!")
             pick1234 = 'hint'
 
