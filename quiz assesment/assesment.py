@@ -2,13 +2,15 @@ import sys
 from time import sleep
 from questions import questions 
 
-def typewriter(words): #function to print out text in a typewriter fashion
+def typewriter(words, colour_code=""): #function to print out text in a typewriter fashion
+    if colour_code:
+        words = f"{colour_code}{words}\033[0m"
     for char in words:
-        sleep(0.01)
+        sleep(0.0) #0.02 #time delay between each character
         sys.stdout.write(char)
         sys.stdout.flush()
-        if char in ':.!, ?><':
-            sleep(0.03)
+        if char in ':.!, ?><\n': #increased time delay between punctuation
+            sleep(0.0) #0.04
     sys.stdout.write("\n\n")
 
 def welcome(): #function to print out the welcome message
@@ -18,10 +20,18 @@ def welcome(): #function to print out the welcome message
     typewriter("Good luck!")
     typewriter("First things first, please enter you name: \n")
     name = input('>>  ').upper().strip()
-    print('WELCONE', name, 'TO MY QUIZ')
+    typewriter('\n')
+    print(f"\033[46;30m{'-' * 52 + '-' * (2 * len(name) + 1)}\033[0m")
+    print(f"\033[46;30m----- W E L C O M E   T O   T H E   Q U I Z   {' '.join(name).upper()} -------\033[0m")
+    print(f"\033[46;30m{'-' * 52 + '-' * (2 * len(name) + 1)}\033[0m")
+    # print(12*'-'+(2*len(name)+1)*'-', colour_code="\033[46;30m")
+    # print('-----', ' '.join(name).upper(), ' -----', colour_code="\033[46;30m")
+    # print(12*'-'+(2*len(name)+1)*'-', colour_code="\033[46;30m")
+    # #print('WELCONE', name, 'TO MY QUIZ')
+    return name
 
 def filter_by_topic(questions): #function to filter the questions based on the player's choice
-    typewriter('What topic would you like to be quizzed on?')
+    typewriter('\n\nWhat topic would you like to be quizzed on?')
     typewriter("Enter your chosen topic from the following:\n\nRetro Gaming | Kendrick Lamar | Aphex Twin") 
     
     player_choice = input().lower().strip()
@@ -43,14 +53,13 @@ def game_loop(filtered_questions):
     valid_answers = ['a', 'b', 'c', 'd', 'A', 'B', 'C', 'D', '1', '2', '3', '4', 'hint', 'HINT'] #valid answers for the quiz
     score = 0
     hints = 3
-    typewriter('please answer the question by entering the letter of the correct answer or the letter that corresponds to the correct answer')
+    typewriter("please enter your answers as a through to d or 1 through to 4")
     typewriter("If your having trouble, remember you can ask for a hint by typing 'hint'")
     typewriter("Beware, you only have 3")
     typewriter('Good luck!')
 
     for x in filtered_questions: 
-
-        typewriter(x["qns"])
+        typewriter(x["qns"], colour_code="\033[46;30m")
         typewriter(" | ".join(x['options']))
         typewriter("Enter your answer below:")
         answer = input().lower().strip()
@@ -100,26 +109,35 @@ def game_loop(filtered_questions):
             typewriter(f"The correct answer is {x['options'][correct_answer - 1]}") #displaying the correct answer when the player gets it wrong
     return score
 
-def end_game(score, filtered_questions):
+def end_game(score, filtered_questions, name):
     typewriter(f"Your score is {score} out of {len(filtered_questions)} questions.")
+    typewriter(f"Thats {score/len(filtered_questions) * 100}%!")
     typewriter("Would you like to play again? (y/n)")
     play_again = input().lower().strip()
-    if play_again == 'y':
-        main_without_welcome_page(questions)
+    while play_again not in ['y', 'n', 'yes', 'no']:
+        typewriter("Invalid input.")
+        typewriter("Re-enter")
+        play_again = input().lower().strip()
+    if play_again == 'y' or play_again == 'yes':
+            main_without_welcome_page(questions)
+    elif play_again == 'n' or play_again == 'no':
+            typewriter("\nThank you for playing {name}!")
+            typewriter("Hope to see you soon")
     else:
-        typewriter("\nThank you for playing!")
-        typewriter("Hope you had fun!")
-        
-
+        pass
+            
+            
 def main(questions): #main function
-    #welcome() #remeber to remove the comment to enable the welcome message
+    welcome() #remeber to remove the comment to enable the welcome message
     filtered_questions = filter_by_topic(questions)
     score = game_loop(filtered_questions)
-    end_game(score, filtered_questions)
+    name = welcome()
+    end_game(score, filtered_questions, name)
 
 def main_without_welcome_page(questions): #main function but doesnt include the welcome message for a player that wants to play the game multiple times
     filtered_questions = filter_by_topic(questions)
     score = game_loop(filtered_questions)
-    end_game(score, filtered_questions)
+    name = welcome()
+    end_game(score, filtered_questions, name)
 
 main(questions)
