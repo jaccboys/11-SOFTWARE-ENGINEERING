@@ -1,6 +1,7 @@
 import sys
 from time import sleep
 from questions import questions 
+import random
 
 def typewriter(words, colour_code=""): #function to print out text in a typewriter fashion
     if colour_code:
@@ -20,14 +21,12 @@ def welcome(): #function to print out the welcome message
     typewriter("Good luck!")
     typewriter("First things first, please enter you name: \n")
     name = input('>>  ').upper().strip()
+    if name is None or name == "":
+        name = "Player 1"
     typewriter('\n')
-    print(f"\033[46;30m{'-' * 52 + '-' * (2 * len(name) + 1)}\033[0m")
-    print(f"\033[46;30m----- W E L C O M E   T O   T H E   Q U I Z   {' '.join(name).upper()} -------\033[0m")
-    print(f"\033[46;30m{'-' * 52 + '-' * (2 * len(name) + 1)}\033[0m")
-    # print(12*'-'+(2*len(name)+1)*'-', colour_code="\033[46;30m")
-    # print('-----', ' '.join(name).upper(), ' -----', colour_code="\033[46;30m")
-    # print(12*'-'+(2*len(name)+1)*'-', colour_code="\033[46;30m")
-    # #print('WELCONE', name, 'TO MY QUIZ')
+    typewriter(f"\033[46;30m{'-' * 52 + '-' * (2 * len(name) + 1)}\033[0m")
+    typewriter(f"\033[46;30m----- W E L C O M E   T O   T H E   Q U I Z   {' '.join(name).upper()} -------\033[0m")
+    typewriter(f"\033[46;30m{'-' * 52 + '-' * (2 * len(name) + 1)}\033[0m")
     return name
 
 def filter_by_topic(questions): #function to filter the questions based on the player's choice
@@ -57,6 +56,8 @@ def game_loop(filtered_questions):
     typewriter("If your having trouble, remember you can ask for a hint by typing 'hint'")
     typewriter("Beware, you only have 3")
     typewriter('Good luck!')
+
+    random.shuffle(filtered_questions) #shuffling the questions
 
     for x in filtered_questions: 
         typewriter(x["qns"], colour_code="\033[46;30m")
